@@ -1,7 +1,7 @@
 """
 A 2-dimensional vector class
 
-# BEGIN VECTOR2D_V0_DEMO
+# tag::VECTOR2D_V0_DEMO[]
 
     >>> v1 = Vector2d(3, 4)
     >>> print(v1.x, v1.y)  # <1>
@@ -24,10 +24,10 @@ A 2-dimensional vector class
     >>> bool(v1), bool(Vector2d(0, 0))  # <9>
     (True, False)
 
-# END VECTOR2D_V0_DEMO
+# end::VECTOR2D_V0_DEMO[]
 """
 
-# BEGIN VECTOR2D_V0
+# tag::VECTOR2D_V0[]
 from array import array
 import math
 
@@ -61,4 +61,4 @@ class Vector2d:
 
     def __bool__(self):
         return bool(abs(self))  # <10>
-# END VECTOR2D_V0
+# end::VECTOR2D_V0[]

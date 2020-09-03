@@ -78,26 +78,26 @@ Tests of hashing:
 
     >>> v1 = Vector2d(3, 4)
     >>> v2 = Vector2d(3.1, 4.2)
-    >>> hash(v1) != hash(v2)
-    True
+    >>> hash(v1), hash(v2)
+    (7, 384307168202284039)
     >>> len(set([v1, v2]))
     2
 
-# END VECTOR2D_V3_DEMO
+# end::VECTOR2D_V3_DEMO[]
 
 """
 
 from array import array
 import math
 
-# BEGIN VECTOR2D_V3_SLOTS
+# tag::VECTOR2D_V3_SLOTS[]
 class Vector2d:
     __slots__ = ('__x', '__y')
 
     typecode = 'd'
 
     # methods follow (omitted in book listing)
-# END VECTOR2D_V3_SLOTS
+# end::VECTOR2D_V3_SLOTS[]
 
     def __init__(self, x, y):
         self.__x = float(x)
@@ -129,7 +129,7 @@ class Vector2d:
         return tuple(self) == tuple(other)
 
     def __hash__(self):
-        return hash((self.x, self.y))
+        return hash(self.x) ^ hash(self.y)
 
     def __abs__(self):
         return math.hypot(self.x, self.y)

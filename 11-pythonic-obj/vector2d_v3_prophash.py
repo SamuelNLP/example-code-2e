@@ -64,7 +64,7 @@ Tests of ``format()`` with polar coordinates:
     >>> format(Vector2d(1, 1), '0.5fp')
     '<1.41421, 0.78540>'
 
-# BEGIN VECTOR2D_V3_DEMO
+# tag::VECTOR2D_V3_DEMO[]
 Tests of `x` and `y` read-only properties:
 
     >>> v1.x, v1.y
@@ -74,26 +74,26 @@ Tests of `x` and `y` read-only properties:
       ...
     AttributeError: can't set attribute
 
-# END VECTOR2D_V3_HASH_DEMO
+# end::VECTOR2D_V3_HASH_DEMO[]
 
 Tests of hashing:
-# BEGIN VECTOR2D_V3_HASH_DEMO
+# tag::VECTOR2D_V3_HASH_DEMO[]
 
     >>> v1 = Vector2d(3, 4)
     >>> v2 = Vector2d(3.1, 4.2)
-    >>> hash(v1) != hash(v2)
-    True
+    >>> hash(v1), hash(v2)
+    (7, 384307168202284039)
     >>> len(set([v1, v2]))
     2
 
-# END VECTOR2D_V3_DEMO
+# end::VECTOR2D_V3_DEMO[]
 
 """
 
 from array import array
 import math
 
-# BEGIN VECTOR2D_V3_PROP
+# tag::VECTOR2D_V3_PROP[]
 class Vector2d:
     typecode = 'd'
 
@@ -113,7 +113,7 @@ class Vector2d:
         return (i for i in (self.x, self.y))  # <6>
 
     # remaining methods follow (omitted in book listing)
-# END VECTOR2D_V3_PROP
+# end::VECTOR2D_V3_PROP[]
 
     def __repr__(self):
         class_name = type(self).__name__
@@ -129,10 +129,10 @@ class Vector2d:
     def __eq__(self, other):
         return tuple(self) == tuple(other)
 
-# BEGIN VECTOR_V3_HASH
+# tag::VECTOR_V3_HASH[]
     def __hash__(self):
-        return hash((self.x, self.y))
-# END VECTOR_V3_HASH
+        return hash(self.x) ^ hash(self.y)
+# end::VECTOR_V3_HASH[]
 
     def __abs__(self):
         return math.hypot(self.x, self.y)

@@ -100,7 +100,7 @@ class Vector2d:
     def angle(self):
         return math.atan2(self.y, self.x)
 
-# BEGIN VECTOR2D_V2_FORMAT
+# tag::VECTOR2D_V2_FORMAT[]
     def __format__(self, fmt_spec=''):
         if fmt_spec.endswith('p'):  # <1>
             fmt_spec = fmt_spec[:-1]  # <2>
@@ -111,7 +111,7 @@ class Vector2d:
             outer_fmt = '({}, {})'  # <6>
         components = (format(c, fmt_spec) for c in coords)  # <7>
         return outer_fmt.format(*components)  # <8>
-# END VECTOR2D_V2_FORMAT
+# end::VECTOR2D_V2_FORMAT[]
 
     @classmethod
     def frombytes(cls, octets):

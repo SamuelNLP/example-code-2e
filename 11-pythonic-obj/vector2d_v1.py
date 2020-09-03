@@ -67,10 +67,10 @@ class Vector2d:
     def __bool__(self):
         return bool(abs(self))
 
-# BEGIN VECTOR2D_V1
+# tag::VECTOR2D_V1[]
     @classmethod  # <1>
     def frombytes(cls, octets):  # <2>
         typecode = chr(octets[0])  # <3>
         memv = memoryview(octets[1:]).cast(typecode)  # <4>
         return cls(*memv)  # <5>
-# END VECTOR2D_V1
+# end::VECTOR2D_V1[]
